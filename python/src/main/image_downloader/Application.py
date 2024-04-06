@@ -35,6 +35,15 @@ class Application:
         print(f"Time taken to execute: {end_time - start_time} seconds.")
 
 
+def get_config_path():
+    # Get the directory of the current script file
+    current_script_directory = Path(__file__).parent
+    # Build the path to config.json relative to the current script
+    local_config_path = current_script_directory / Path('../common/config.json')
+    return local_config_path
+
+
 if __name__ == "__main__":
-    app = Application('../common/config.json')
+    config_path = get_config_path()
+    app = Application(str(config_path))
     app.run()
