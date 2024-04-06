@@ -11,7 +11,7 @@ class Application:
         self.processor.process_images()
 
 def main():
-    app = Application('../../resources/config/config.json')
+    app = Application('../common/config.json')
     app.run()
 
 

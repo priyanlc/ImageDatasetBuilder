@@ -1,10 +1,8 @@
-from pathlib import Path
-
 from main.common.ConfigLoader import ConfigLoader
-from main.image_filter.DeleteCorruptImages import DeleteCorruptImages
+from main.delete_corrupt_images.DeleteCorruptImages import DeleteCorruptImages
 
 
-class DeleteCorruptImagesApplication:
+class Application:
     def __init__(self, config_path):
         self.config_loader = ConfigLoader(config_path)
         config = self.config_loader.load_config()
@@ -15,7 +13,7 @@ class DeleteCorruptImagesApplication:
 
 
 def main():
-    app = DeleteCorruptImagesApplication('../../resources/config/config.json')
+    app = Application('../common/config.json')
     app.run()
 
 

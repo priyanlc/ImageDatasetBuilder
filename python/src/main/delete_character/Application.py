@@ -20,7 +20,7 @@ class Application:
 
 def main():
     try:
-        app = Application('../../resources/config/config.json')
+        app = Application('../common/config.json')
         app.run()
     except Exception as e:
         print(f"Application error: {e}")

@@ -24,7 +24,7 @@ class Application:
 
 
 def main():
-    app = Application('../../resources/config/config.json')
+    app = Application('../common/config.json')
     app.run()
 
 

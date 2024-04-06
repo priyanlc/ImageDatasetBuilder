@@ -14,5 +14,5 @@ class DeleteSmallApplication:
 
 
 def main():
-    app = DeleteSmallApplication('../../resources/config/config.json')
+    app = DeleteSmallApplication('../common/config.json')
     app.run()

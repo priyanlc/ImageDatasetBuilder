@@ -2,12 +2,13 @@ from concurrent.futures import ThreadPoolExecutor
 import time
 from pathlib import Path
 
-from main.common.ConfigLoader import ConfigLoader
 from main.image_downloader.ImageDownloader import HTTPImageDownloader
 from main.image_downloader.URLManager import URLManager
 
+from main.common.ConfigLoader import ConfigLoader
 
-class ImageDownloaderApplication:
+
+class Application:
     def __init__(self, config_path):
         self.config_loader = ConfigLoader(config_path)
         self.downloader = HTTPImageDownloader()
@@ -35,5 +36,5 @@ class ImageDownloaderApplication:
 
 
 if __name__ == "__main__":
-    app = ImageDownloaderApplication('../../resources/config/config.json')
+    app = Application('../common/config.json')
     app.run()
