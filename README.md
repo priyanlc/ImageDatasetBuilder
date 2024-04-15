@@ -26,14 +26,7 @@ conda activate img_downloader
 pip install requests    
 pip install Pillow    
 conda deactivate    
-```  
 ```
-conda create -n deepface python=3.10
-conda activate deepface
-pip install deepface
-pip install tf-keras
-conda deactivate
-``` 
 ```
 conda create -n face_recognition python=3.10
 conda activate face_recognition
@@ -66,7 +59,8 @@ conda deactivate
 conda activate img_downloader     
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"    
 cd ~/codebase/ImageDatasetBuilder/python/src    
-python3 main/image_downloader/Application.py    
+python3 main/image_downloader/Application.py  
+conda deactivate  
 ```
 ## Step2 - Delete images not within the size range - > 100kb < 5 mb
 ### run delete script
@@ -74,7 +68,8 @@ python3 main/image_downloader/Application.py
 conda activate img_downloader     
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"    
 cd ~/codebase/ImageDatasetBuilder/python/src    
-python3 main/image_filter/Application.py    
+python3 main/image_filter/Application.py  
+conda deactivate  
 ```
 ## Step3 - delete corrupt images
 ### run delete corrupt images script
@@ -82,7 +77,8 @@ python3 main/image_filter/Application.py
 conda activate img_downloader     
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"    
 cd ~/codebase/ImageDatasetBuilder/python/src    
-python3 main/delete_corrupt_images/Application.py   
+python3 main/delete_corrupt_images/Application.py  
+conda deactivate
 ```
 ## Step4 - filter images with faces - part1
 ### run the deepface script
@@ -90,7 +86,8 @@ python3 main/delete_corrupt_images/Application.py
 conda activate deepface 
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"    
 cd ~/codebase/ImageDatasetBuilder/python/src
-python3 main/face_filter2/Application.py
+python3 main/face_filter2/Application.py 
+conda deactivate
 ```
 ## Step5 - filter images with faces - part2
 ### run the script
@@ -98,7 +95,8 @@ python3 main/face_filter2/Application.py
 conda activate face_recognition
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"   
 cd ~/codebase/ImageDatasetBuilder/python/src
-python3 main/face_filter/Application.py
+python3 main/face_filter/Application.py  
+conda deactivate
 ```
 ## Step6 - Delete images with characters
 ### run the easyocr script
@@ -106,6 +104,7 @@ python3 main/face_filter/Application.py
 conda activate easyocr  
 export PYTHONPATH="~/codebase/ImageDatasetBuilder/python/src:$PYTHONPATH"   
 cd ~/codebase/ImageDatasetBuilder/python/src
-python3 main/delete_character/Application.py
+python3 main/delete_character/Application.py  
+conda deactivate
 ```
 ## Step7 (optional, not implemented yet) - Delete images with NSFW content
