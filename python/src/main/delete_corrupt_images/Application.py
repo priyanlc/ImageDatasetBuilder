@@ -1,3 +1,5 @@
+from pathlib import Path
+
 from main.common.ConfigLoader import ConfigLoader
 from main.delete_corrupt_images.DeleteCorruptImages import DeleteCorruptImages
 
@@ -12,10 +14,14 @@ class Application:
         self.cleaner.clean_directory()
 
 
-def main():
-    app = Application('../common/config.json')
-    app.run()
+def get_config_path():
+    # Get the directory of the current script file
+    current_script_directory = Path(__file__).parent
+    # Build the path to config.json relative to the current script
+    local_config_path = current_script_directory / Path('../common/config.json')
+    return local_config_path
 
 
 if __name__ == "__main__":
-    main()
+    app = Application(str(get_config_path()))
+    app.run()

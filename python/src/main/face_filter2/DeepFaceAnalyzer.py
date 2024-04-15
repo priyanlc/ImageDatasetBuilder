@@ -1,4 +1,5 @@
 from deepface import DeepFace
+import os
 
 class DeepFaceAnalyzer:
     @staticmethod

@@ -44,6 +44,5 @@ def get_config_path():
 
 
 if __name__ == "__main__":
-    config_path = get_config_path()
-    app = Application(str(config_path))
+    app = Application(str(get_config_path()))
     app.run()

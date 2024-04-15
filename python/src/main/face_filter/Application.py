@@ -4,16 +4,19 @@ from main.common.ConfigLoader import ConfigLoader
 from main.face_filter.FaceImageProcessor import FaceImageProcessor
 from main.face_filter.ImageBatchManager import ImageBatchManager
 
+from pathlib import Path
+
 
 class Application:
     def __init__(self, config_path):
-        self.config = ConfigLoader.load_config(config_path)
+        self.config_loader = ConfigLoader(config_path)
         self.processor = FaceImageProcessor()
         self.batch_manager = ImageBatchManager(self.processor)
 
     def run(self):
+        config = self.config_loader.load_config()
         self._check_cuda()
-        self.batch_manager.process_folder(self.config['download_dir'])
+        self.batch_manager.process_folder(config['download_dir'])
 
     @staticmethod
     def _check_cuda():
@@ -23,10 +26,14 @@ class Application:
             print("CUDA is not enabled in dlib, processing will use the CPU.")
 
 
-def main():
-    app = Application('../common/config.json')
-    app.run()
+def get_config_path():
+    # Get the directory of the current script file
+    current_script_directory = Path(__file__).parent
+    # Build the path to config.json relative to the current script
+    local_config_path = current_script_directory / Path('../common/config.json')
+    return local_config_path
 
 
 if __name__ == "__main__":
-    main()
+    app = Application(str(get_config_path()))
+    app.run()

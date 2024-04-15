@@ -1,6 +1,6 @@
 import os
 
-from main.image_filter.ImageValidator import ImageValidator
+from main.delete_corrupt_images.ImageValidator import ImageValidator
 
 
 class DeleteCorruptImages:

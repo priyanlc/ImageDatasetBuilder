@@ -1,3 +1,5 @@
+from pathlib import Path
+
 import torch
 
 from main.common.ConfigLoader import ConfigLoader
@@ -10,21 +12,23 @@ class Application:
         if not torch.cuda.is_available():
             raise EnvironmentError("GPU is not available. Please check your CUDA setup.")
 
-        self.config = ConfigLoader.load_config(config_path)
+        self.config_loader = ConfigLoader(config_path)
         self.processor = EasyOCRProcessor()
         self.batch_processor = ImageBatchProcessor(self.processor)
 
     def run(self):
-        self.batch_processor.process_folder(self.config['download_dir'])
+        config = self.config_loader.load_config()
+        self.batch_processor.process_folder(config['download_dir'])
 
 
-def main():
-    try:
-        app = Application('../common/config.json')
-        app.run()
-    except Exception as e:
-        print(f"Application error: {e}")
+def get_config_path():
+    # Get the directory of the current script file
+    current_script_directory = Path(__file__).parent
+    # Build the path to config.json relative to the current script
+    local_config_path = current_script_directory / Path('../common/config.json')
+    return local_config_path
 
 
 if __name__ == "__main__":
-    main()
+    app = Application(str(get_config_path()))
+    app.run()

@@ -2,7 +2,7 @@ from main.common.ConfigLoader import ConfigLoader
 from main.image_filter.DeleteSmall import DeleteSmallImages
 
 
-class DeleteSmallApplication:
+class Application:
     def __init__(self, config_path):
         self.config_loader = ConfigLoader(config_path)
         self.image_filter = DeleteSmallImages(self.config_loader.load_config()['min_size_kb'],
@@ -14,5 +14,5 @@ class DeleteSmallApplication:
 
 
 def main():
-    app = DeleteSmallApplication('../common/config.json')
+    app = Application('../common/config.json')
     app.run()
