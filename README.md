@@ -107,4 +107,4 @@ cd ~/codebase/ImageDatasetBuilder/python/src
 python3 main/delete_character/Application.py  
 conda deactivate
 ```
-## Step7 (optional, not implemented yet) - Delete images with NSFW content
+## Step7 (optional, not implemented yet) - Delete images with NSFW content  
