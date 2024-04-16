@@ -17,6 +17,7 @@ This ensures the dataset is precisely tailored for applications requiring clean 
 5. Delete images without human faces with face_recognition  
 6. Delete images with characters  
 7. Delete images with NSFW content(optional)  
+8. Manual quality check and filter
 
 ## Setup process
 #### setup envs
