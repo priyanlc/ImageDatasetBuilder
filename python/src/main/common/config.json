@@ -1,5 +1,5 @@
 {
-    "urls_file": "resources/links/jpg_links.csv",
+    "urls_file": "resources/links/prod/jpg_links.csv",
     "download_dir": "resources/downloads",
     "num_threads": 20,
     "min_size_kb": 100,
