@@ -4,7 +4,7 @@
 
 The objective of this process, executed through a series of Python scripts, is to curate an image dataset exclusively containing human images, free from any extraneous elements. 
 The procedure starts with downloading images from specified HTML links. 
-It proceeds to eliminate images that fall outside the desired size range (100 KB to 5 MB), are corrupted, or do not contain human faces, as determined by facial recognition technology. 
+It proceeds to eliminate images that fall outside the desired size range (50k KB to 5 MB), are corrupted, or do not contain human faces, as determined by facial recognition technology. 
 Additionally, images featuring recognizable characters or, optionally, NSFW content are also removed. 
 This ensures the dataset is precisely tailored for applications requiring clean and focused human imagery.
 
@@ -41,13 +41,8 @@ python3 -m pip install --upgrade pip
 python3 -m pip install wheel
 
 python3 -m pip install --upgrade tensorrt
-
 pip install deepface
 pip install tf-keras
-
-[//]: # (pip install tf-keras)
-
-[//]: # (pip install tensorrt)
 conda deactivate
 ```  
 ```
@@ -63,6 +58,7 @@ pip install easyocr
 conda deactivate
 ``` 
 
+## Running the python scripts individually 
 ## Step1 - Download images from html links
 ### run download script
 ```
@@ -117,4 +113,23 @@ cd ~/codebase/ImageDatasetBuilder/python/src
 python3 main/delete_character/Application.py  
 conda deactivate
 ```
-## Step7 (optional, not implemented yet) - Delete images with NSFW content  
+## Step7 (optional, not implemented yet) - Delete images with NSFW content 
+
+
+## Running the bash scripts individually 
+
+```commandline
+./download_images.sh
+./delete_small_images.sh
+./deep_face.sh
+./face_recognition.sh
+./character_deletion.sh
+```
+
+## Running scripts from Apache Airflow
+Drop the following Airflow DAGs to the Airflow Dags folder
+```commandline
+1. download_images.py
+2. delete_small.py
+3. filter_images.py
+```
