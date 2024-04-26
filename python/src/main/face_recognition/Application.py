@@ -1,8 +1,8 @@
 import dlib
 
 from main.common.ConfigLoader import ConfigLoader
-from main.face_filter.FaceImageProcessor import FaceImageProcessor
-from main.face_filter.ImageBatchManager import ImageBatchManager
+from main.face_recognition.FaceImageProcessor import FaceImageProcessor
+from main.face_recognition.ImageBatchManager import ImageBatchManager
 
 from pathlib import Path
 

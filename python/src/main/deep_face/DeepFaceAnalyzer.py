@@ -1,12 +1,17 @@
 from deepface import DeepFace
 import os
 
+
 class DeepFaceAnalyzer:
     @staticmethod
     def process_image(filename):
         try:
-            analysis = DeepFace.analyze(img_path=filename, actions=['emotion'], enforce_detection=False)
-            return f"Kept '{filename}', faces detected."
+            detect = DeepFace.extract_faces(img_path=filename, detector_backend='fastmtcnn')
+            if not detect:
+                os.remove(filename)
+                f"Deleted '{filename}' as no faces were detected "
+            else:
+                return f"Kept '{filename}', faces detected."
         except Exception as e:
             if 'OOM' in str(e):
                 return f"Skipped '{filename}' due to memory constraints."

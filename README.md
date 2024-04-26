@@ -37,8 +37,17 @@ conda deactivate
 ```
 conda create -n deepface python=3.10
 conda activate deepface
+python3 -m pip install --upgrade pip
+python3 -m pip install wheel
+
+python3 -m pip install --upgrade tensorrt
+
 pip install deepface
 pip install tf-keras
+
+[//]: # (pip install tf-keras)
+
+[//]: # (pip install tensorrt)
 conda deactivate
 ```  
 ```

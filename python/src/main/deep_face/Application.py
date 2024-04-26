@@ -1,7 +1,7 @@
 from pathlib import Path
 
 from main.common.ConfigLoader import ConfigLoader
-from main.face_filter2.ImageProcessor import ImageProcessor
+from main.deep_face.ImageProcessor import ImageProcessor
 
 
 class Application:

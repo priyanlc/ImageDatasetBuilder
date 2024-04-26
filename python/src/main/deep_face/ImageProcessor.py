@@ -2,7 +2,7 @@ from multiprocessing import Pool, cpu_count
 import time
 import os
 
-from main.face_filter2.DeepFaceAnalyzer import DeepFaceAnalyzer
+from main.deep_face.DeepFaceAnalyzer import DeepFaceAnalyzer
 
 
 class ImageProcessor:
